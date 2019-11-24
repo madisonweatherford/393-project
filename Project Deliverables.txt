@@ -1,0 +1,18 @@
+(1)	ERD (picture, jpeg)
+
+(2)	Create Script (SQL)
+		insert statements to put data into DB (min 15 individuals for each entity-class, more within reason)
+	Delete Script
+		undoes "create script", drops tables
+	Report Script (Select Query --> answers to questions)
+
+(3)	LibreBase ODB file --> manifestation of the "Create Script"
+		contains Forms (beautiful, luxurious) (Form Wizard maybe with subforms)
+		contains Reports (SQL Select statements) (Report Wizard)
+
+(4)	Writeup --> Member names (and sections if team members spanning multiple)
+	Assumptions (how you assume unknown things work from DB perspective), 
+	Statement of understanding (one paragraph) in your own words on the business
+		* optional* why extra credit is deserved
+
+(5)	zip all this into one file, and submit, one submission per team.
