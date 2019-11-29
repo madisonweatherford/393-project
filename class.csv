@@ -1,4 +1,4 @@
-Class_ID	Department	Catalog_Number	Section	Professor_ID
+Class_ID,Department,Catalog_Number,Section,Professor_ID
 
 1	BUS	391	1	826624034
 
