@@ -1,4 +1,4 @@
-﻿CREATE TABLE Accommodation
+CREATE TABLE Accommodation
 (
 accommodation_id int NOT NULL,
 name varchar(200),
