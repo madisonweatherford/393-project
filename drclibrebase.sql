@@ -40,9 +40,6 @@ student_id int NOT NULL
 ALTER TABLE exam_student_map
 ADD FOREIGN KEY (exam_id) references exam(exam_id);
 
-ALTER TABLE exam_student_map
-ADD FOREIGN KEY (student_id) references student(student_id);
-
 
 CREATE TABLE  Student
 (
@@ -51,6 +48,9 @@ first_name varchar(20) NOT NULL,
 last_name varchar(20),
 cp_username varchar(20)
 );
+
+ALTER TABLE exam_student_map
+ADD FOREIGN KEY (student_id) references student(student_id);
 
 CREATE TABLE Student_Class_Map
 (
