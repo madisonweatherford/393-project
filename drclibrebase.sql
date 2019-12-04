@@ -52,10 +52,10 @@ last_name varchar(20),
 cp_username varchar(20)
 );
 
-CREATE TABLE  Student_Class_Map
+CREATE TABLE Student_Class_Map
 (
 class_id int NOT NULL,
-student_id int NOT NULL,
+student_id int NOT NULL
 );
 
 ALTER TABLE Student_Class_Map
