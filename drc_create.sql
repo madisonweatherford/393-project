@@ -96,6 +96,14 @@ name varchar(200),
 description varchar(1000)
 );
 
+ALTER TABLE disability_accommodation_map
+ADD FOREIGN KEY (accommodation_id) references accommodation(accommodation_id);
+
+ALTER TABLE disability_accommodation_map
+ADD FOREIGN KEY (disability_id) references disability(disability_id);
+
+
+
 
 /*insert statements to professor*/
 
