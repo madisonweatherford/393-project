@@ -81,7 +81,7 @@ ALTER TABLE Student_Class_Map
 ADD FOREIGN KEY (student_id) references student(student_id);
 
 ALTER TABLE Student_Class_Map
-ADD FOREIGN KEY (class_id) references class(class_id);
+ADD FOREIGN KEY (class_id) references classes(class_id);
 
 CREATE TABLE  Professor
 (
