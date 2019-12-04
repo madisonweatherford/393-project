@@ -1,16 +1,16 @@
-CREATE TABLE Accommodation
+CREATE TABLE accommodation
 (
 accommodation_id int PRIMARY KEY NOT NULL,
 name varchar(200),
 description varchar(1000)
 );
 
-CREATE TABLE Classes
+CREATE TABLE classes
 (
 class_id int NOT NULL,
 department varchar(20) PRIMARY KEY NOT NULL,
 catalog_number int,
-section_number int,
+section int,
 professor_id int
 
 );
@@ -28,32 +28,32 @@ accommodation_id int NOT NULL,
 disability_id int NOT NULL
 );
 
-CREATE TABLE  Exam
+CREATE TABLE  exam
 (
 exam_id int PRIMARY KEY NOT NULL,
 class_id int NOT NULL,
-date_adminstered date,
+date_adminstered varchar(200),
 materials_allowed varchar(200)
 );
-ALTER TABLE Exam
-ADD FOREIGN KEY (class_id) references class(class_id);
+ALTER TABLE exam
+ADD FOREIGN KEY (class_id) references classes(class_id);
 
-CREATE TABLE  Exam_Student_Map
+CREATE TABLE  exam_student_map
 (
 exam_id int NOT NULL,
-student_id int NOT NULL,
+student_id int NOT NULL
 );
 
-ALTER TABLE Exam_Student_Map
+ALTER TABLE exam_student_map
 ADD FOREIGN KEY (exam_id) references exam(exam_id);
 
-ALTER TABLE Exam_Student_Map
+ALTER TABLE exam_student_map
 ADD FOREIGN KEY (student_id) references student(student_id);
 
 CREATE TABLE Student_Disability_Map
 (
 disability_id int NOT NULL,
-student_id int NOT NULL,
+student_id int NOT NULL
 );
 
 
