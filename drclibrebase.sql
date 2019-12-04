@@ -1,8 +1,10 @@
-CREATE TABLE accommodation
+
+CREATE TABLE  Professor
 (
-accommodation_id int PRIMARY KEY NOT NULL,
-name varchar(200),
-description varchar(1000)
+professor_id int PRIMARY KEY NOT NULL,
+first_name varchar(20),
+last_name varchar(20),
+cp_username varchar(20)
 );
 
 CREATE TABLE classes
@@ -15,18 +17,8 @@ professor_id int
 
 );
 
-CREATE TABLE  Disability
-(
-disability_id int PRIMARY KEY NOT NULL,
-name varchar(200),
-description varchar(1000)
-);
-
-CREATE TABLE  Disability_Accommodation_Map
-(
-accommodation_id int NOT NULL,
-disability_id int NOT NULL
-);
+ALTER TABLE Classes
+ADD FOREIGN KEY (professor_id) references professor(professor_id);
 
 CREATE TABLE  exam
 (
@@ -36,16 +28,21 @@ date_administered varchar(200),
 materials_allowed varchar(200)
 );
 
+ALTER TABLE exam
+ADD FOREIGN KEY (class_id) references classes(class_id);
+
 CREATE TABLE  exam_student_map
 (
 exam_id int NOT NULL,
 student_id int NOT NULL
 );
-CREATE TABLE Student_Disability_Map
-(
-disability_id int NOT NULL,
-student_id int NOT NULL
-);
+
+ALTER TABLE exam_student_map
+ADD FOREIGN KEY (exam_id) references exam(exam_id);
+
+ALTER TABLE exam_student_map
+ADD FOREIGN KEY (student_id) references student(student_id);
+
 
 CREATE TABLE  Student
 (
@@ -61,35 +58,45 @@ class_id int NOT NULL,
 student_id int NOT NULL,
 );
 
-CREATE TABLE  Professor
+ALTER TABLE Student_Class_Map
+ADD FOREIGN KEY (student_id) references student(student_id);
+
+ALTER TABLE Student_Class_Map
+ADD FOREIGN KEY (class_id) references classes(class_id);
+
+CREATE TABLE Student_Disability_Map
 (
-professor_id int PRIMARY KEY NOT NULL,
-first_name varchar(20),
-last_name varchar(20),
-cp_username varchar(20)
+disability_id int NOT NULL,
+student_id int NOT NULL
 );
 
-ALTER TABLE exam
-ADD FOREIGN KEY (class_id) references classes(class_id);
-ALTER TABLE exam_student_map
-ADD FOREIGN KEY (exam_id) references exam(exam_id);
+CREATE TABLE  Disability
+(
+disability_id int PRIMARY KEY NOT NULL,
+name varchar(200),
+description varchar(1000)
+);
 
-ALTER TABLE exam_student_map
-ADD FOREIGN KEY (student_id) references student(student_id);
+CREATE TABLE  Disability_Accommodation_Map
+(
+accommodation_id int NOT NULL,
+disability_id int NOT NULL
+);
+
 ALTER TABLE Student_Disability_Map
 ADD FOREIGN KEY (student_id) references student(student_id);
 
 ALTER TABLE Student_Disability_Map
 ADD FOREIGN KEY (disability_id) references disability(disability_id);
 
-ALTER TABLE Student_Class_Map
-ADD FOREIGN KEY (student_id) references student(student_id);
+CREATE TABLE accommodation
+(
+accommodation_id int PRIMARY KEY NOT NULL,
+name varchar(200),
+description varchar(1000)
+);
 
-ALTER TABLE Student_Class_Map
-ADD FOREIGN KEY (class_id) references classes(class_id);
 
-ALTER TABLE Classes
-ADD FOREIGN KEY (professor_id) references professor(professor_id);
 
 /*insert accommodation*/
 INSERT INTO accommodation (Accommodation_ID, Name, Description) VALUES ('167524','Extended Time','Student is able to have extra time to complete their exam');
