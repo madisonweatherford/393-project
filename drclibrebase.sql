@@ -7,8 +7,8 @@ description varchar(1000)
 
 CREATE TABLE classes
 (
-class_id int NOT NULL,
-department varchar(20) PRIMARY KEY NOT NULL,
+class_id int PRIMARY KEY NOT NULL,
+department varchar(20),
 catalog_number int,
 section int,
 professor_id int
@@ -35,33 +35,17 @@ class_id int NOT NULL,
 date_administered varchar(200),
 materials_allowed varchar(200)
 );
-ALTER TABLE exam
-ADD FOREIGN KEY (class_id) references classes(class_id);
 
 CREATE TABLE  exam_student_map
 (
 exam_id int NOT NULL,
 student_id int NOT NULL
 );
-
-ALTER TABLE exam_student_map
-ADD FOREIGN KEY (exam_id) references exam(exam_id);
-
-ALTER TABLE exam_student_map
-ADD FOREIGN KEY (student_id) references student(student_id);
-
 CREATE TABLE Student_Disability_Map
 (
 disability_id int NOT NULL,
 student_id int NOT NULL
 );
-
-
-ALTER TABLE Student_Disability_Map
-ADD FOREIGN KEY (student_id) references student(student_id);
-
-ALTER TABLE Student_Disability_Map
-ADD FOREIGN KEY (disability_id) references disability(disability_id);
 
 CREATE TABLE  Student
 (
@@ -77,12 +61,6 @@ class_id int NOT NULL,
 student_id int NOT NULL,
 );
 
-ALTER TABLE Student_Class_Map
-ADD FOREIGN KEY (student_id) references student(student_id);
-
-ALTER TABLE Student_Class_Map
-ADD FOREIGN KEY (class_id) references classes(class_id);
-
 CREATE TABLE  Professor
 (
 professor_id int PRIMARY KEY NOT NULL,
@@ -90,6 +68,25 @@ first_name varchar(20),
 last_name varchar(20),
 cp_username varchar(20)
 );
+
+ALTER TABLE exam
+ADD FOREIGN KEY (class_id) references classes(class_id);
+ALTER TABLE exam_student_map
+ADD FOREIGN KEY (exam_id) references exam(exam_id);
+
+ALTER TABLE exam_student_map
+ADD FOREIGN KEY (student_id) references student(student_id);
+ALTER TABLE Student_Disability_Map
+ADD FOREIGN KEY (student_id) references student(student_id);
+
+ALTER TABLE Student_Disability_Map
+ADD FOREIGN KEY (disability_id) references disability(disability_id);
+
+ALTER TABLE Student_Class_Map
+ADD FOREIGN KEY (student_id) references student(student_id);
+
+ALTER TABLE Student_Class_Map
+ADD FOREIGN KEY (class_id) references classes(class_id);
 
 ALTER TABLE Classes
 ADD FOREIGN KEY (professor_id) references professor(professor_id);
