@@ -1,7 +1,7 @@
 
 CREATE TABLE  Professor
 (
-professor_id int PRIMARY KEY NOT NULL,
+professor_id int NOT NULL PRIMARY KEY,
 first_name varchar(20),
 last_name varchar(20),
 cp_username varchar(20)
@@ -9,7 +9,7 @@ cp_username varchar(20)
 
 CREATE TABLE classes
 (
-class_id int PRIMARY KEY NOT NULL,
+class_id int NOT NULL PRIMARY KEY,
 department varchar(20),
 catalog_number int,
 section int,
@@ -22,7 +22,7 @@ ADD FOREIGN KEY (professor_id) references professor(professor_id);
 
 CREATE TABLE  exam
 (
-exam_id int PRIMARY KEY NOT NULL,
+exam_id int NOT NULL PRIMARY KEY,
 class_id int NOT NULL,
 date_administered varchar(200),
 materials_allowed varchar(200)
@@ -43,7 +43,7 @@ ADD FOREIGN KEY (exam_id) references exam(exam_id);
 
 CREATE TABLE  Student
 (
-student_id int PRIMARY KEY NOT NULL,
+student_id int NOT NULL PRIMARY KEY,
 first_name varchar(20) NOT NULL,
 last_name varchar(20),
 cp_username varchar(20)
@@ -72,7 +72,7 @@ student_id int NOT NULL
 
 CREATE TABLE  Disability
 (
-disability_id int PRIMARY KEY NOT NULL,
+disability_id int NOT NULL PRIMARY KEY,
 name varchar(200),
 description varchar(1000)
 );
@@ -91,7 +91,7 @@ ADD FOREIGN KEY (disability_id) references disability(disability_id);
 
 CREATE TABLE accommodation
 (
-accommodation_id int PRIMARY KEY NOT NULL,
+accommodation_id int NOT NULL PRIMARY KEY,
 name varchar(200),
 description varchar(1000)
 );
