@@ -32,7 +32,7 @@ CREATE TABLE  exam
 (
 exam_id int PRIMARY KEY NOT NULL,
 class_id int NOT NULL,
-date_adminstered varchar(200),
+date_adminiiiiiiiiistered varchar(200),
 materials_allowed varchar(200)
 );
 ALTER TABLE exam
