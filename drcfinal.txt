@@ -1,42 +1,39 @@
 CREATE TABLE Accommodation
 (
-accommodation_id int NOT NULL,
+accommodation_id int PRIMARY KEY NOT NULL,
 name varchar(200),
-description varchar(1000),
-PRIMARY KEY (accommodation_id)
+description varchar(1000)
 );
 
 CREATE TABLE Classes
 (
 class_id int NOT NULL,
-department varchar(20) NOT NULL,
+department varchar(20) PRIMARY KEY NOT NULL,
 catalog_number int,
 section_number int,
-professor_id int,
-PRIMARY KEY (class_id)
+professor_id int
+
 );
 
 CREATE TABLE  Disability
 (
-disability_id int NOT NULL,
+disability_id int PRIMARY KEY NOT NULL,
 name varchar(200),
-description varchar(1000),
-PRIMARY KEY (disability_id)
+description varchar(1000)
 );
 
 CREATE TABLE  Disability_Accommodation_Map
 (
 accommodation_id int NOT NULL,
-disability_id int NOT NULL,
+disability_id int NOT NULL
 );
 
 CREATE TABLE  Exam
 (
-exam_id int NOT NULL,
+exam_id int PRIMARY KEY NOT NULL,
 class_id int NOT NULL,
 date_adminstered date,
-materials_allowed varchar(200),
-PRIMARY KEY (exam_id)
+materials_allowed varchar(200)
 );
 ALTER TABLE Exam
 ADD FOREIGN KEY (class_id) references class(class_id);
@@ -68,11 +65,10 @@ ADD FOREIGN KEY (disability_id) references disability(disability_id);
 
 CREATE TABLE  Student
 (
-student_id int NOT NULL,
+student_id int PRIMARY KEY NOT NULL,
 first_name varchar(20) NOT NULL,
 last_name varchar(20),
-cp_username varchar(20),
-PRIMARY KEY (student_id)
+cp_username varchar(20)
 );
 
 CREATE TABLE  Student_Class_Map
@@ -89,11 +85,10 @@ ADD FOREIGN KEY (class_id) references class(class_id);
 
 CREATE TABLE  Professor
 (
-professor_id int NOT NULL,
+professor_id int PRIMARY KEY NOT NULL,
 first_name varchar(20),
 last_name varchar(20),
-cp_username varchar(20),
-PRIMARY KEY (professor_id)
+cp_username varchar(20)
 );
 
 ALTER TABLE Class
