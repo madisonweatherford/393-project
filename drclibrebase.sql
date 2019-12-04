@@ -32,7 +32,7 @@ CREATE TABLE  exam
 (
 exam_id int PRIMARY KEY NOT NULL,
 class_id int NOT NULL,
-date_adminiiiiiiiiistered varchar(200),
+date_administered varchar(200),
 materials_allowed varchar(200)
 );
 ALTER TABLE exam
@@ -91,7 +91,7 @@ last_name varchar(20),
 cp_username varchar(20)
 );
 
-ALTER TABLE Class
+ALTER TABLE Classes
 ADD FOREIGN KEY (professor_id) references professor(professor_id);
 
 /*insert accommodation*/
