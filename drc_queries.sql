@@ -9,8 +9,8 @@ select PROFESSOR_ID, FIRST_NAME, LAST_NAME
 from PROFESSOR; 
 	
 /*Provide a list of all of the exams taken at the DRC this quarter. */
-Select EXAM_ID, CLASS_ID, STUDENT_ID, DATE_ADMINISTERED,  MATERIALS_ALLOWED from EXAM E
-Join EXAM_STUDENT_MAP ESM on ESM.EXAM_ID = E.EXAM_ID
+Select E.EXAM_ID, E.CLASS_ID, ESM.STUDENT_ID, E.DATE_ADMINISTERED, E.MATERIALS_ALLOWED from EXAM E
+Join EXAM_STUDENT_MAP ESM on ESM.EXAM_ID = E.EXAM_ID;
 		
 /*Provide a list of all the disabilities and the accompanying accommodations. */ 	
 select D.DISABILITY_ID, NAME, ACCOMMODATION_ID
@@ -20,7 +20,7 @@ Group by D.DISABILITY_ID, NAME, ACCOMMODATION_ID;
 
 /*What are the accommodations that DRC students can utilize? */
 Select ACCOMMODATION_ID, NAME, DESCRIPTION
-from ACCOMMODATION
+from ACCOMMODATION;
 
 /*What is the most common disability?*/
 select distinct(DISABILITY_ID), count(STUDENT_ID) from STUDENT_DISABILITY_MAP
@@ -48,5 +48,5 @@ order by count(EXAM_ID) desc;
 Select count(CLASS_ID), FIRST_NAME, LAST_NAME from CLASSES C
 Join PROFESSOR P on P.PROFESSOR_ID = C.PROFESSOR_ID
 Where LAST_NAME = 'Erickson' and FIRST_NAME = 'Gregg'
-GROUP BY FIRST_NAME, LAST_NAME
+GROUP BY FIRST_NAME, LAST_NAME;
 
