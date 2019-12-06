@@ -1,6 +1,5 @@
 
 DROP TABLE Student_Class_Map;
-DROP TABLE Accommodation;
 DROP TABLE Disability_Accommodation_Map;
 DROP TABLE Exam_Student_Map;  
 DROP TABLE Student_Disability_Map;
@@ -9,6 +8,7 @@ DROP TABLE Disability;
 DROP TABLE Student;
 DROP TABLE Classes;
 DROP TABLE Professor;
+DROP TABLE Accommodation;
 commit;
 
 
