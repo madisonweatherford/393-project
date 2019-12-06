@@ -1,3 +1,4 @@
+/*Create Script for Karenna Hunt, Kristen Chan, and Madison Weatherford
 CREATE TABLE  Professor
 (
 professor_id int NOT NULL PRIMARY KEY,
