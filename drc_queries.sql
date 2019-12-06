@@ -13,30 +13,31 @@ Select E.EXAM_ID, E.CLASS_ID, ESM.STUDENT_ID, E.DATE_ADMINISTERED, E.MATERIALS_A
 Join EXAM_STUDENT_MAP ESM on ESM.EXAM_ID = E.EXAM_ID;
 		
 /*Provide a list of all the disabilities and the accompanying accommodations. */ 	
-select D.DISABILITY_ID, NAME, ACCOMMODATION_ID
+select D.DISABILITY_ID, D.NAME, ACCOMMODATION_ID, DAMM.NAME
 from DISABILITY D
-Join DISABILITY_ACCOMMODATION_MAP DAM on DAM.DISABILITY_ID = D.DISABILITY_ID
-Group by D.DISABILITY_ID, NAME, ACCOMMODATION_ID;
+Join DIS_ACC_MAP_MOD DAMM on DAMM.DISABILITY_ID = D.DISABILITY_ID
+Group by D.DISABILITY_ID, D.NAME, ACCOMMODATION_ID, DAMM.NAME;
+
 
 /*What are the accommodations that DRC students can utilize? */
 Select ACCOMMODATION_ID, NAME, DESCRIPTION
 from ACCOMMODATION;
 
 /*What is the most common disability?*/
-select distinct(DISABILITY_ID), count(STUDENT_ID) from STUDENT_DISABILITY_MAP
-group by DISABILITY_ID
+select distinct(DISABILITY_ID), count(STUDENT_ID),NAME from student_disability_map_mod
+group by DISABILITY_ID, (DISABILITY_ID), NAME
 order by count(STUDENT_ID) desc; 
 
 /*What accommodation is the most common accommodation? */
-select count(DISABILITY_ID), (A.ACCOMMODATION_ID) from ACCOMMODATION A
+select count(DISABILITY_ID), A.NAME from ACCOMMODATION A
 join DISABILITY_ACCOMMODATION_MAP DAM on A.ACCOMMODATION_ID = DAM.ACCOMMODATION_ID
-group by A.ACCOMMODATION_ID
+group by A.ACCOMMODATION_ID, A.NAME
 order by count(DISABILITY_ID) desc;
 
 /*What accommodation is the least common accommodation? */
-select count(DISABILITY_ID), (A.ACCOMMODATION_ID) from ACCOMMODATION A
+select count(DISABILITY_ID), A.NAME from ACCOMMODATION A
 join DISABILITY_ACCOMMODATION_MAP DAM on A.ACCOMMODATION_ID = DAM.ACCOMMODATION_ID
-group by A.ACCOMMODATION_ID
+group by A.ACCOMMODATION_ID, A.NAME
 order by count(DISABILITY_ID) asc;
 
 /*Which student had to take the most tests this quarter? */
