@@ -1,4 +1,5 @@
-
+DROP VIEW STUDENT_DISABILITY_MAP_MOD;
+DROP VIEW DIS_ACC_MAP_MOD;
 DROP TABLE Student_Class_Map;
 DROP TABLE Disability_Accommodation_Map;
 DROP TABLE Exam_Student_Map;  
